@@ -1,0 +1,38 @@
+[project]
+name = "fastmcp-101"
+version = "0.1.0"
+description = "FastMCP 101: build, test, and deploy your first MCP server in Python."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastmcp>=4.0,<5",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["weather_server"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+pythonpath = ["."]
+testpaths = ["tests"]
+markers = [
+    "integration: tests that call the real Open-Meteo API over the network",
+]
+addopts = "-m 'not integration'"

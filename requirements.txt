@@ -1,0 +1,6 @@
+# Plain-pip alternative to pyproject.toml. Install with:
+#   pip install -r requirements.txt
+fastmcp>=4.0,<5
+requests>=2.31
+pytest>=8.0
+pytest-asyncio>=0.23
